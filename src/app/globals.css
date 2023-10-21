@@ -16,3 +16,69 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
+
+  .user-menu {
+    display: inline-block;
+    flex: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .menu-button {
+    background-color: #ccc;
+    height: 60px;
+    width: 60px;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+  
+  .dropdown {
+    border-radius: 5px;
+    padding:10px;
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 7px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    z-index: 1;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+  
+  .user-menu:hover .dropdown {
+    display: block;
+  }
+
+  /* NAV BUTTON ANIMATION */ 
+
+  .nav-button {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  
+  .line {
+    width: 100%;
+    height: 4px;
+    background-color: #7289da;
+    transition: all 0.3s ease;
+  }
+  
+  .nav-button.active .line:nth-child(1) {
+    transform: translateY(13px) rotate(45deg);
+  }
+  
+  .nav-button.active .line:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .nav-button.active .line:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+  }
+  
+  

@@ -18,7 +18,7 @@ export default function PageTwo({ deletePDF, file }) {
   ];
 
   return (
-    <div className="w-1/5 h-full flex flex-col rounded-b-lg justify-between items-center">
+    <div className="w-full lg:w-1/5 h-full flex flex-col rounded-b-lg justify-between items-center">
       <div className="space-y-5 rounded-lg flex-col p-4 w-3/4 h-full">
         {rightSidebarButtons.map((label, idx) => (
           <button

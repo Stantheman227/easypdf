@@ -13,6 +13,8 @@ export default function ConfirmScreen({
 }: ConfirmScreenProps) {
   const { handleProceed, isLoading: isProceedLoading } = useProceed();
 
+  const roundedTotalPrice = totalPrice.toFixed(4);
+
   const handleProceedAndClose = async (text: string) => {
     await handleProceed(text);
     closeConfirmScreen();
@@ -20,9 +22,9 @@ export default function ConfirmScreen({
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded-md flex flex-col items-center space-y-5">
+      <div className="bg-white p-6 rounded-md flex flex-col items-center space-y-5 ml-10 mr-10 lg:ml-0 lg:mr-0">
         <p>
-          Der Preis für die Zusammenfassung beträgt {totalPrice}€. Möchten Sie
+          Der Preis für die Zusammenfassung beträgt {roundedTotalPrice}€. Möchten Sie
           fortfahren?
         </p>
 

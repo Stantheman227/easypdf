@@ -3,7 +3,9 @@ import { useDropzone } from "react-dropzone";
 
 function FileDropzone({ onFileSelected, selectedFile, currentPage }) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    accept: "application/pdf" as any,
+    accept: {
+      "application/pdf": [".pdf"],
+    },
     onDrop: (acceptedFiles) => {
       if (acceptedFiles.length > 0) {
         onFileSelected(acceptedFiles[0]);
