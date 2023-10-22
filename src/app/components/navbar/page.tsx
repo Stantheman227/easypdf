@@ -18,17 +18,17 @@ export default function navbar() {
           <UserMenu />
         </div>
         <Link href="/">
-          <button className="rounded-lg font-bold text-2xl text-easy-blue">
+          <button className="rounded-lg font-bold text-2xl text-easy-blue hover:opacity-50">
             easyPDF
           </button>
         </Link>
-        <Link href="/">
-          <button className="rounded-lg font-bold text-2xl text-easy-blue">
+        <Link href="/faqpreis">
+          <button className="rounded-lg font-bold text-2xl text-easy-blue hover:opacity-50">
             Erklärung & Preis
           </button>
         </Link>
         <Link href="/">
-          <button className="rounded-lg font-bold text-2xl text-easy-blue">
+          <button className="rounded-lg font-bold text-2xl text-easy-blue hover:opacity-50">
             About
           </button>
         </Link>
@@ -52,7 +52,7 @@ export default function navbar() {
                   easyPDF
                 </button>
               </Link>
-              <Link href="/">
+              <Link href="/faqpreis">
                 <button className="rounded-lg font-bold text-2xl text-easy-blue block p-4 hover:bg-blue-100">
                   Erklärung & Preis
                 </button>

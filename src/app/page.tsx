@@ -1,6 +1,5 @@
 "use client";
 import { Auth0Provider } from "@auth0/auth0-react";
-
 import Navbar from "./components/Navbar/page";
 import PageOne from "./components/PageOne/page"; // import PageOne
 import PageTwo from "./components/PageTwo/page"; // import PageTwo

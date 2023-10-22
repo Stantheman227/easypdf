@@ -3,8 +3,11 @@ import React from "react";
 
 const LoginButton = () => {
   const { loginWithRedirect } = useAuth0();
-
-  return <button onClick={() => loginWithRedirect()}>Log In</button>;
+  return (
+    <div className="hover:opacity-50">
+  <button className="" onClick={() => loginWithRedirect()}>Log In</button>
+  </div>
+  )
 };
 
 export default LoginButton;
