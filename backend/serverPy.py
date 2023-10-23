@@ -9,7 +9,6 @@ import openai
 import tiktoken
 import logging
 import requests
-import uuid
 from dotenv import load_dotenv
 
 load_dotenv()
