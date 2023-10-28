@@ -16,6 +16,8 @@ const nextConfig = {
 
     return config;
   },
+  reactStrictMode: false,
+
   images: {
     domains: ['lh3.googleusercontent.com'],
   },

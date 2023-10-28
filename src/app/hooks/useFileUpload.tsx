@@ -39,7 +39,7 @@ export function useFileUpload() {
       console.error("Error:", error);
     } finally {
       setIsLoading(false);
-    }
+    } 
   };
 
   return { handleUpload, isLoading, extractedText, totalPrice, showConfirmScreen, setShowConfirmScreen};

@@ -16,7 +16,7 @@ load_dotenv()
 
 logging.basicConfig(level=logging.DEBUG)
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads/'
+app.config['UPLOAD_FOLDER'] = '../uploads/'
 CORS(app, origins="http://localhost:3000")
 
 MAX_TOKENS = 4097  # Die maximale Anzahl der Tokens, die an GPT-3.5 gesendet werden können
@@ -136,6 +136,8 @@ def extract_text():
 
 def summarize_text():
     extracted_text = request.json['extractedText']
+    content = request.json.get('content', '') 
+    
     openai.api_key = os.getenv('OPENAI_API_KEY')
     chunks = chunk_text(extracted_text, MAX_TOKENS - 200)  # -200, um Raum für zusätzliche Tokens für den Prompt zu lassen
     summaries = []
@@ -145,7 +147,7 @@ def summarize_text():
             response = openai.ChatCompletion.create(
                 model="gpt-3.5-turbo",
                 messages=[
-                    {"role": "user", "content": f"Fasse den folgenden Text sehr sehr einfach zusammen:\n\n{chunk}\n\nZusammenfassung:"}
+                    {"role": "user", "content": f"{content}\n\n{chunk}\n\n"}
                 ]
             )
             summary = response['choices'][0]['message']['content']

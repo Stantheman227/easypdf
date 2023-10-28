@@ -1,49 +1,33 @@
 "use client";
-import { Auth0Provider } from "@auth0/auth0-react";
+import React from "react";
 import Navbar from "./components/Navbar/page";
-import PageOne from "./components/PageOne/page"; // import PageOne
-import PageTwo from "./components/PageTwo/page"; // import PageTwo
-import PageThree from "./components/PageThree/page"; // import PageThree
-import { useState } from "react";
 
-export default function Home() {
-  const [file, setFile] = useState(null);
-  const [currentPage, setCurrentPage] = useState(1);
+function faqpreis() {
 
-  const handleFileSelected = (file) => {
-    setFile(file);
-    // Handle the selected file here
-    console.log("Selected file:", file);
-  };
+    return (
+          <main className="flex flex-col h-full lg:h-screen w-screen lg:w-full">
+            <div className="flex flex-[10vh]">
+              <Navbar />
+            </div>
+            <div className="flex flex-col lg:flex-[90vh] h-full space-x-1 text-center items-center text-lg space-y-10">
+                <h1 className="font-bold">
+                    Sind deine Verträge zu kompliziert? Vereinfache jetzt den Inhalt dener PDFs mit nur einem Klick!
+                </h1>
+                <h2 className="font-bold">
+                    Wie funktioniert`s?
+                </h2>
+                <p>
+                    Schritt 1. PDF Datei Hochladen Drag & Drop oder Click & Choose. <br/>
+                    Schritt 2. Wähle wie deine PDF zusammengefasst werden soll oder schreibe einen eigenen Prompt.<br/>
+                    Schritt 3. Warte bis die API deine Anfrage verarbeitet hat und verstehe deine PDF in wenigen Sekunden Lesezeit.
+                </p>
+                
+                <h3 className="font-bold">Preisstruktur</h3>
+                <p>Die API Anfragen kosten nur wenige Cents, diese versuchen wir mit sehr geringem Aufpreis, um die Ausgaben zu decken, weiter an die Nutzer zu geben.<br/>
+                Jede API Anfrage, kostet abhängig von der Anzahl an Tokens und somit der länge des Textes innerhalb der PDF Datei, unterschiedlich viel. Grob kann man überschlagen: 1 PDF Seite ~ 0,025€. Gerademal zweieinhalb Cent :D!</p>
 
-  const deletePDF = () => {
-    setFile(null);
-    setCurrentPage(1);
-  };
+            </div>
+          </main>      );
+        }
 
-  return (
-    <Auth0Provider
-      domain={"dev-072oa8u8x3a84a4k.us.auth0.com"}
-      clientId={"Ll3QSOdci9k0IaxvPVJBX27nMyZazBCQ"}
-      authorizationParams={{
-        redirect_uri:
-          typeof window !== "undefined" ? window.location.origin : "",
-      }}
-    >
-      <main className="flex flex-col h-full lg:h-screen w-screen lg:w-full">
-        <div className="flex flex-[10vh]">
-          <Navbar />
-        </div>
-        <div className="flex flex-col lg:flex-row lg:flex-[90vh] h-full justify-between space-x-1">
-          <PageOne
-            handleFileSelected={handleFileSelected}
-            file={file}
-            currentPage={currentPage}
-          />
-          <PageTwo file={file} deletePDF={deletePDF} />
-          <PageThree />
-        </div>
-      </main>
-    </Auth0Provider>
-  );
-}
+export default faqpreis;

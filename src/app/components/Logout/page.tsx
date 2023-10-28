@@ -1,12 +1,19 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
+import supabase from "../../supabaseClient/page";
 
 const LogoutButton = () => {
-    const { logout } = useAuth0();
+    const handleLogout = async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+            console.error("Fehler beim Abmelden:", error);
+            return;
+        }
+        console.log("Erfolgreich abgemeldet!")
+    };
 
     return (
         <div className="hover:opacity-50">
-        <button onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>
+        <button onClick={() => handleLogout()}>
             Log Out
         </button>
         </div>

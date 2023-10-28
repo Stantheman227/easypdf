@@ -8,7 +8,7 @@ export function useProceed() {
   const [isLoading, setIsLoading] = useState(false);
   const [summaryState, setSummaryState] = useState<String | null>(null);
 
-  const handleProceed = async (extractedText: string) => {
+  const handleProceed = async (extractedText: string, content:string) => {
     setIsLoading(true);
     try {
       const summarizeResponse = await fetch("http://localhost:3001/api/summarize", {
@@ -16,7 +16,7 @@ export function useProceed() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ extractedText }),
+        body: JSON.stringify({ extractedText, content }),
       });
 
       if (!summarizeResponse.ok) {

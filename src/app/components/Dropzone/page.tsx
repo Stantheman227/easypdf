@@ -27,7 +27,7 @@ function FileDropzone({ onFileSelected, selectedFile, currentPage }) {
         </>
       ) : (
         <div
-          className="w-full h-full flex items-center justify-center bg-gray-200 opacity-60"
+          className="w-full h-full flex items-center justify-center bg-white"
           {...getRootProps()}
         >
           <input className="w-full h-full" {...getInputProps()} />
