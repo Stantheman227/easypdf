@@ -1,11 +1,22 @@
 // LoginModal.js
-import React from 'react';
+import React from "react";
 
-const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, setShowModal, setShowSignUpModal }) => {
+const LoginModal = ({
+  email,
+  setEmail,
+  password,
+  setPassword,
+  handleLogin,
+  closeLoginModal,
+  setShowLoginModal,
+  setShowSignUpModal,
+  errorMessage,
+  isLoading,
+}) => {
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center"
-      onClick={() => setShowModal(false)}
+      onClick={() => closeLoginModal()}
     >
       <div
         className="bg-white w-1/3 h-auto rounded-lg p-8 shadow-lg"
@@ -34,22 +45,29 @@ const LoginModal = ({ email, setEmail, password, setPassword, handleLogin, setSh
           <button
             className="bg-blue-500 text-white rounded px-4 py-2 hover:bg-blue-600 focus:outline-none"
             onClick={handleLogin}
+            disabled={isLoading}
           >
-            Anmelden
+            {isLoading ? <div className="loader"></div> : "Anmelden"}
           </button>
           <button
             className="text-gray-500 hover:text-gray-700 focus:outline-none"
-            onClick={() => { setShowModal(false); setShowSignUpModal(true); }}  
+            onClick={() => {
+              closeLoginModal();
+              setShowSignUpModal(true);
+            }}
           >
             Jetzt registrieren
           </button>
           <button
             className="text-gray-500 hover:text-gray-700 focus:outline-none"
-            onClick={() => setShowModal(false)}
+            onClick={() => closeLoginModal()}
           >
             Schließen
           </button>
         </div>
+        {errorMessage && (
+          <div className="text-red-500 mt-2">{errorMessage}</div>
+        )}
       </div>
     </div>
   );

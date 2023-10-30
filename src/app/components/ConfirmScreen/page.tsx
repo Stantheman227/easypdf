@@ -11,28 +11,35 @@ export default function ConfirmScreen({
   totalPrice,
   extractedText,
   closeConfirmScreen,
-  selectedContent
+  selectedContent,
 }: ConfirmScreenProps) {
-  const { handleProceed, isLoading: isProceedLoading } = useProceed();
+  const {
+    handleProceed,
+    isLoading: isProceedLoading,
+    errorMessage,
+  } = useProceed();
 
   const roundedTotalPrice = totalPrice.toFixed(4);
 
   const handleProceedAndClose = async (text: string) => {
-    await handleProceed(text, selectedContent);
-    closeConfirmScreen();
+    const success = await handleProceed(text, selectedContent); // Änderung hier
+    if (success) {
+      // Überprüfung hinzugefügt
+      closeConfirmScreen();
+    }
   };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-sm">
       <div className="bg-white p-6 rounded-md flex flex-col items-center space-y-5 ml-10 mr-10 lg:ml-0 lg:mr-0">
         <p>
-          Der Preis für die Zusammenfassung beträgt {roundedTotalPrice}€. Möchten Sie
-          fortfahren?
+          Der Preis für die Zusammenfassung beträgt {roundedTotalPrice}€.
+          Möchten Sie fortfahren?
         </p>
 
         {isProceedLoading ? (
           <div>
-          <div className="loader bg-easy-blue"></div>
+            <div className="loader bg-easy-blue"></div>
           </div>
         ) : (
           <div className="mt-4 flex justify-center space-x-6">
@@ -55,6 +62,7 @@ export default function ConfirmScreen({
             </button>
           </div>
         )}
+        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
       </div>
     </div>
   );

@@ -3,7 +3,6 @@ import Link from "next/link";
 import UserMenu from "../UserMenu/page";
 
 export default function Navbar() {
-  console.log("Navbar rendered");
   const [isOpen, setIsOpen] = useState(false);
   const toggleNav = () => setIsOpen(!isOpen);
 

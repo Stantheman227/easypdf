@@ -23,12 +23,12 @@ export default function PageTwo({ deletePDF, file }) {
   };
 
   function zusammenfassen() {
-    setSelectedContent("Fasse den Text übersichtlich zusammen und erstelle ein kleines Inhaltsverzeichnis am Anfang.");
-    handleUpload(file);
+    setSelectedContent("Fasse den Text verständlich zusammen und erstelle sinvolle Abästze für die Zusammenfassung. Die Zusammenfassung soll maximal 250 Wörter lang sein.");
+    handleUpload(file)
   };
 
   function vereinfachen() {
-    setSelectedContent("Vereinfache den Text, sodass jemand ohne Vorkenntnisse sie verstehen kann und erstelle ein kleines Inhaltsverzeichnis am Anfang.");
+    setSelectedContent("Vereinfache den Text, sodass jemand ohne Vorkenntnisse ihn verstehen kann und erstelle ein kleines Inhaltsverzeichnis am Anfang.");
     handleUpload(file);
   };
 
@@ -44,7 +44,7 @@ export default function PageTwo({ deletePDF, file }) {
 
   return (
     <div className="w-full lg:w-1/5 h-full flex flex-col rounded-b-lg justify-between items-center p-1">
-      <div className="space-y-5 rounded-lg w-full flex flex-col items-center p-4 h-full bg-gray-200">
+      <div className="space-y-5 rounded-lg w-full flex flex-col items-center p-4 h-full bg-gray-200 ">
 
         <button onClick={() => file && zusammenfassen()}>
           <div className="h-[85px] w-[300px] rounded-lg bg-easy-blue text-white flex flex-row">

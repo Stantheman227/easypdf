@@ -2,6 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+/* In your global CSS file (e.g., styles.css or global.css) */
+@font-face {
+  font-family: 'DM Sans';
+  src: url('/DMSans-Regular.woff') format('woff'); /* Adjust the path to your WOFF file */
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply the font globally to all elements */
+* {
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* You can also specify font size, colors, and other styles as needed */
+
+
 
 .loader {
     border: 5px solid #f3f3f3;
@@ -28,7 +44,6 @@
     background-color: #ccc;
     height: 60px;
     width: 60px;
-    cursor: pointer;
     overflow: hidden;
     border-radius: 50%;
   }
