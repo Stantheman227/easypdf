@@ -13,22 +13,23 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="flex space-x-10 w-full items-center max-h-[73px] z-20">
+    <div className="flex space-x-10 w-full items-center min-h-[73px] max-h-[73px] z-20 bg-easy-blue-200">
       <div className="flex w-full ml-10 mr-10 space-x-10 justify-between items-center">
         {/* Large Screen */}
-        <div className="flex justify-between items-center w-full space-x-10">
+        <div className="flex justify-start items-center w-full space-x-10">
           {/* User Menu */}
-          <div className="text-2xl text-easy-blue font-bold">
-            <UserMenu />
-          </div>
+
           {/* Navigation Buttons */}
           {navItems.map((item, index) => (
             <Link key={index} href={item.href}>
-              <button className="rounded-lg font-bold text-2xl text-easy-blue hover:opacity-50 md:flex hidden">
+              <button className="rounded-lg text-xl text-black hover:opacity-50 md:flex hidden">
                 {item.text}
               </button>
             </Link>
           ))}
+        </div>
+        <div className="text-2xl text-easy-blue font-bold">
+          <UserMenu />
         </div>
         {/* Small Screen */}
         <div className="md:hidden">

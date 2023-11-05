@@ -5,7 +5,7 @@ const PromptLoginModal = () => {
 
     return (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center"
+          className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center z-9"
         >
           <div
             className="bg-white w-1/3 h-auto rounded-lg p-8 shadow-lg"

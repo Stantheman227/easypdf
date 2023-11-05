@@ -12,7 +12,7 @@ const LogoutButton = () => {
     };
 
     return (
-        <div className="hover:opacity-50">
+        <div className="hover:opacity-50 p-2 text-center border-black border rounded-lg w-[150px]">
         <button onClick={() => handleLogout()}>
             Log Out
         </button>

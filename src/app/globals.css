@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* In your global CSS file (e.g., styles.css or global.css) */
 @font-face {
   font-family: 'DM Sans';
@@ -14,9 +15,6 @@
 * {
   font-family: 'DM Sans', sans-serif;
 }
-
-/* You can also specify font size, colors, and other styles as needed */
-
 
 
 .loader {
@@ -40,13 +38,6 @@
     justify-content: center;
   }
   
-  .menu-button {
-    background-color: #ccc;
-    height: 60px;
-    width: 60px;
-    overflow: hidden;
-    border-radius: 50%;
-  }
   
   .dropdown {
     border-radius: 5px;
@@ -54,10 +45,10 @@
     display: none;
     position: absolute;
     top: 65px;
-    left: 7px;
+    right: 7px;
     background-color: #fff;
     border: 1px solid #ccc;
-    z-index: 1;
+    z-index: 9;
     width: 400px;
     box-shadow: 0 0 10px rgba(0,0,0,0.2);
   }
@@ -95,5 +86,35 @@
   .nav-button.active .line:nth-child(3) {
     transform: translateY(-13px) rotate(-45deg);
   }
+
+
+  /* Scrollbar */
+
+  /* This will target the scrollbar available for elements with a scrollbar */
+::-webkit-scrollbar {
+  width: 8px; /* or any other value you prefer */
+}
+
+::-webkit-scrollbar-button {
+  display: none; /* This will remove the buttons */
+}
+
+/* Optional: if you want to also style the thumb */
+::-webkit-scrollbar-thumb {
+  background: #c6cff0 ;
+}
+
+/* Optional: if you want to also style the track */
+::-webkit-scrollbar-track {
+  background: #ffffff
+}
+
+/* This will target the scrollbar available for elements with a scrollbar */
+* {
+  scrollbar-width: thin; /* "thin" is a preset value in Firefox */
+  scrollbar-color: #c6cff0 #ffffff; /* thumb and track color */
+}
+
+
   
   

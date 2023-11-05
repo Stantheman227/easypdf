@@ -3,16 +3,16 @@ import Navbar from "../components/Navbar/page";
 import PageOne from "../components/PageOne/page"; // import PageOne
 import PageTwo from "../components/PageTwo/page"; // import PageTwo
 import PageThree from "../components/PageThree/page"; // import PageThree
+import QueryInfo from "../components/QueryInfo/page";
+import RecentQueries from "../components/RecentQueries/page";
 import PromptLoginModal from "../components/PromptLoginModal/page";
 import supabase from "../supabaseClient/page";
 import { useState, useEffect } from "react";
 
-
 export default function easypdf() {
   const [file, setFile] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);  // Zustandsvariable für den Anmeldestatus
-
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Zustandsvariable für den Anmeldestatus
 
   useEffect(() => {
     // Define an async function
@@ -67,19 +67,68 @@ export default function easypdf() {
   };
 
   return (
-      <main className="flex flex-col h-full lg:h-screen w-screen lg:w-full">
-        {!isLoggedIn && <PromptLoginModal />}
-        <div className="flex flex-[10vh]">
-          <Navbar />
+    <main className="flex flex-col h-full lg:h-screen w-screen lg:w-full">
+      {!isLoggedIn && <PromptLoginModal />}
+      <div className="">
+        <Navbar />
+      </div>
+
+      <div className="flex flex-col lg:flex-row bg-easy-blue-200">
+        <div className="flex basis-3/4 flex-col lg:flex-row w-full h-full">
+          <div className="flex h-full">
+            <RecentQueries
+              queries={[
+                "Krankenkassenbescheid",
+                "Antrag",
+                "Bestätigung",
+                "Antrag2",
+                "Handyvertrag",
+                "Bankkonto",
+                "Abbuchungsbestätigung",
+                "Krankenkassenbescheid",
+                "Antrag",
+                "Bestätigung",
+                "Antrag2",
+                "Handyvertrag",
+                "Bankkonto",
+                "Abbuchungsbestätigung",
+                "Krankenkassenbescheid",
+                "Antrag",
+                "Bestätigung",
+                "Antrag2",
+                "Handyvertrag",
+                "Bankkonto",
+                "Abbuchungsbestätigung",
+                "Krankenkassenbescheid",
+                "Antrag",
+                "Bestätigung",
+                "Antrag2",
+                "Handyvertrag",
+                "Bankkonto",
+                "Abbuchungsbestätigung",
+                
+                
+              ]}
+            />
+          </div>
+
+          <div className="flex w-full h-full">
+            <PageThree />
+          </div>
         </div>
-        <div className="flex flex-col lg:flex-row lg:flex-[90vh] h-full justify-between space-x-1">
-          <PageOne
-            handleFileSelected={handleFileSelected}
-            file={file}
-            currentPage={currentPage}
-          />
-          <PageTwo file={file} deletePDF={deletePDF} />
-          <PageThree />
+
+        <div className="flex basis-1/4 flex-col h-full w-full items-center bg-easy-blue-200 p-5">
+          <div className="bg-white w-full h-full rounded-lg flex flex-col items-center p-5 space-y-5">
+            <PageOne
+              handleFileSelected={handleFileSelected}
+              file={file}
+              currentPage={currentPage}
+            />
+            <QueryInfo />
+            <PageTwo file={file} deletePDF={deletePDF} />
+          </div>
         </div>
-      </main>  );
+      </div>
+    </main>
+  );
 }

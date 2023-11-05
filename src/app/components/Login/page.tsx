@@ -137,12 +137,21 @@ const LoginButton = () => {
 
   return (
     <div className="flex">
+      <div className="flex flex-row space-x-5">
       <button
-        className="hover:opacity-50"
+        className="hover:opacity-50 w-[150px]"
         onClick={() => setShowLoginModal(true)}
       >
-        Log In / SignUp
+        <p className="font-thin text-black text-lg border-white border rounded-lg p-3 bg-easy-blue-500">Log In</p>
       </button>
+      <button
+        className="hover:opacity-50 w-[150px]"
+        onClick={() => setShowSignUpModal(true)}
+      >
+        <p className="font-thin text-black text-lg border-white border rounded-md p-3 bg-easy-blue-500">Sign Up</p>
+      </button>
+      </div>
+
       {showLoginModal && !showSignUpModal && (
         <LoginModal
           email={email}

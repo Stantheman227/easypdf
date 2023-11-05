@@ -2,12 +2,16 @@ import React, { useEffect, useState } from "react";
 import supabase from "../../supabaseClient/page";
 import LoginButton from "../Login/page";
 import LogoutButton from "../Logout/page";
-import Image from "next/image";
+import {ChevronDownIcon} from "@heroicons/react/24/outline";
 
 export default function UserMenu() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
   const balance = 12.34; // Mock-Daten
+
+  const getEmailPrefix = (email) => {
+    return email?.split('@')[0];
+  }
 
   useEffect(() => {
     // Define an async function
@@ -74,14 +78,10 @@ export default function UserMenu() {
     <div className="user-menu">
       <div className="">
         {isLoggedIn ? (
-          <div className="menu-button mt-4">
-            <Image
-              height={60}
-              width={60}
-              alt="User Avatar"
-              src="/dog_profile.png"
-            />
-            <div className="dropdown">
+          <div className="flex flex-row border items-center space-x-5 border-easy-blue shadow-lg text-black hover:bg-easy-blue transition-all duration-300 ease-in-out rounded-lg p-3">
+            <p className="font-thin text-lg">{getEmailPrefix(currentUser?.email)}</p>
+            <ChevronDownIcon className="w-4 h-4"/>
+            <div className="dropdown font-thin text-black">
               <LogoutButton />
               <br />
               <p>User Info:</p>

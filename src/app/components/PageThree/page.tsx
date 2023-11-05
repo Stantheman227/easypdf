@@ -20,11 +20,18 @@ export default function PageThree() {
   }, []);
 
   return (
-    <div className="w-full lg:w-2/5 p-2">
-      <div className="h-full w-full border border-solid border-black shadow-xl bg-white rounded-lg p-3 overflow-y-auto max-h-[90vh]">
-        <p className="">
-          {summaryState}
-        </p>
+    <div className=" flex items-center justify-center w-full p-5">
+      <div className="h-full w-full lg:max-w-[750px] min-h-[650px] bg-white md:min-w-[550px] rounded-lg p-3 max-h-[90vh]">
+        {summaryState ? (
+          <p className="">{summaryState}</p>
+        ) : (
+          <div className="w-full h-full flex justify-center items-center">
+            <p className="text-center font-bold text-gray-400">
+              {" "}
+              Laden Sie eine PDF hoch und klicken sie Zusammenfassen!
+            </p>
+          </div>
+        )}
       </div>
     </div>
   );

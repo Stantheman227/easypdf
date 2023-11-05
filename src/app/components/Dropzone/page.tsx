@@ -1,5 +1,7 @@
 import React from "react";
 import { useDropzone } from "react-dropzone";
+import {ArrowUpTrayIcon} from "@heroicons/react/24/outline"
+
 
 function FileDropzone({ onFileSelected, selectedFile, currentPage }) {
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -27,16 +29,16 @@ function FileDropzone({ onFileSelected, selectedFile, currentPage }) {
         </>
       ) : (
         <div
-          className="w-full h-full flex items-center justify-center bg-white"
+          className="w-full h-full flex items-center justify-center rounded-lg bg-easy-blue-200"
           {...getRootProps()}
         >
           <input className="w-full h-full" {...getInputProps()} />
           {isDragActive ? (
-            <p className="text-center text-3xl font-bold">PDF HIER REIN</p>
+            <p className="text-center text-3xl font-bold">PDF</p>
           ) : (
-            <div>
-              <p className="text-center text-3xl font-bold">Hier klicken </p>
-              <p className="text-center text-3xl font-bold">oder PDF rüber ziehen</p>
+            <div className="">
+              <p className="text-center text-2xl font-bold">PDF</p>
+              <ArrowUpTrayIcon/>
             </div>
           )}
         </div>
