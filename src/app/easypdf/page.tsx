@@ -67,14 +67,16 @@ export default function easypdf() {
   };
 
   return (
-    <main className="flex flex-col h-full lg:h-screen w-screen lg:w-full">
+    <main className="flex flex-col w-full h-full">
       {!isLoggedIn && <PromptLoginModal />}
-      <div className="">
+      <div className="flex w-full bg-easy-blue">
         <Navbar />
       </div>
 
       <div className="flex flex-col lg:flex-row bg-easy-blue-200">
-        <div className="flex basis-3/4 flex-col lg:flex-row w-full h-full">
+
+        <div className="flex basis-3/4 flex-col lg:flex-row w-full">
+          
           <div className="flex h-full">
             <RecentQueries
               queries={[
@@ -115,6 +117,7 @@ export default function easypdf() {
           <div className="flex w-full h-full">
             <PageThree />
           </div>
+          
         </div>
 
         <div className="flex basis-1/4 flex-col h-full w-full items-center bg-easy-blue-200 p-5">

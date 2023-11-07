@@ -20,7 +20,7 @@ export default function PageThree() {
   }, []);
 
   return (
-    <div className=" flex items-center justify-center w-full p-5">
+    <div className=" flex items-center justify-center w-full p-5 ">
       <div className="h-full w-full lg:max-w-[750px] min-h-[650px] bg-white md:min-w-[550px] rounded-lg p-3 max-h-[90vh]">
         {summaryState ? (
           <p className="">{summaryState}</p>

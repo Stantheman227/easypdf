@@ -78,7 +78,7 @@ export default function UserMenu() {
     <div className="user-menu">
       <div className="">
         {isLoggedIn ? (
-          <div className="flex flex-row border items-center space-x-5 border-easy-blue shadow-lg text-black hover:bg-easy-blue transition-all duration-300 ease-in-out rounded-lg p-3">
+          <div className="flex flex-row border items-center space-x-5 bg-white border-easy-blue shadow-lg text-black hover:bg-easy-blue transition-all duration-300 ease-in-out rounded-lg p-3">
             <p className="font-thin text-lg">{getEmailPrefix(currentUser?.email)}</p>
             <ChevronDownIcon className="w-4 h-4"/>
             <div className="dropdown font-thin text-black">

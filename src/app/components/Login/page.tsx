@@ -142,13 +142,13 @@ const LoginButton = () => {
         className="hover:opacity-50 w-[150px]"
         onClick={() => setShowLoginModal(true)}
       >
-        <p className="font-thin text-black text-lg border-white border rounded-lg p-3 bg-easy-blue-500">Log In</p>
+        <p className="font-thin text-black text-lg border-black border rounded-lg p-3 bg-white">Log In</p>
       </button>
       <button
         className="hover:opacity-50 w-[150px]"
         onClick={() => setShowSignUpModal(true)}
       >
-        <p className="font-thin text-black text-lg border-white border rounded-md p-3 bg-easy-blue-500">Sign Up</p>
+        <p className="font-thin text-black text-lg border-black border rounded-md p-3 bg-white">Sign Up</p>
       </button>
       </div>
 
