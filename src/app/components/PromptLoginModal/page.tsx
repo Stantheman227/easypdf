@@ -12,7 +12,7 @@ const PromptLoginModal = () => {
             onClick={(e) => e.stopPropagation()}
           >
             <h2 className="text-2xl font-semibold mb-4">Willkommen!</h2>
-            <p>Bitte erstellen Sie ein Konto, um unseren Service nutzen zu können.</p>
+            <p>Bitte erstellen Sie ein kostenloses Konto, um unseren Service nutzen zu können.</p>
             <div className="flex justify-between items-center mt-4">
               <Link href="/">
               <button
