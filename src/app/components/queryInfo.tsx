@@ -1,4 +1,6 @@
-import supabase from "../../supabaseClient/page";
+"use client";
+import supabase from "@/Services/supaBaseClinet";
+
 import { useState, useEffect } from "react";
 
 export default function QueryInfo() {

@@ -1,17 +1,25 @@
+"use client";
 import React, { useEffect, useState } from "react";
-import supabase from "../../supabaseClient/page";
-import LoginButton from "../Login/page";
-import LogoutButton from "../Logout/page";
-import {ChevronDownIcon} from "@heroicons/react/24/outline";
+import supabase from "@/Services/supaBaseClinet";
+
+import LoginButton from "@/Auth/login";
+import LogoutButton from "@/Auth/logout";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { User as SupabaseUser } from "@supabase/gotrue-js";
+
+interface User {
+  email: string | undefined;
+  // Define other user properties as needed
+}
 
 export default function UserMenu() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState(null);
-  const balance = 12.34; // Mock-Daten
+  const [currentUser, setCurrentUser] = useState<SupabaseUser | null>(null);
+  const balance = 12.34; // Mock data
 
-  const getEmailPrefix = (email) => {
-    return email?.split('@')[0];
-  }
+  const getEmailPrefix = (email: string) => {
+    return email.split("@")[0];
+  };
 
   useEffect(() => {
     // Define an async function
@@ -19,9 +27,9 @@ export default function UserMenu() {
       try {
         const { data, error } = await supabase.auth.getSession();
         console.log("Data from supabase.auth.getSession():", data);
-  
+
         const sessionData = data?.session;
-  
+
         if (sessionData && sessionData.user) {
           // Check if user still exists in your database or `auth.users` table
           const { data: user, error: userError } = await supabase
@@ -29,7 +37,7 @@ export default function UserMenu() {
             .select("id")
             .eq("id", sessionData.user.id)
             .single();
-  
+
           if (user) {
             setIsLoggedIn(true);
             console.log("Session data:", sessionData);
@@ -45,7 +53,7 @@ export default function UserMenu() {
           console.log("No active session or user is undefined");
           await supabase.auth.signOut();
         }
-  
+
         if (error) {
           setIsLoggedIn(false);
           console.error("Error fetching session:", error);
@@ -55,10 +63,9 @@ export default function UserMenu() {
         console.error("An error occurred:", err);
       }
     };
-  
+
     fetchUserSession();
   }, []);
-  
 
   useEffect(() => {
     // Handle auth state changes
@@ -79,8 +86,12 @@ export default function UserMenu() {
       <div className="">
         {isLoggedIn ? (
           <div className="flex flex-row border items-center space-x-5 bg-white border-easy-blue shadow-lg text-black hover:bg-easy-blue transition-all duration-300 ease-in-out rounded-lg p-3">
-            <p className="font-thin text-lg">{getEmailPrefix(currentUser?.email)}</p>
-            <ChevronDownIcon className="w-4 h-4"/>
+            <p className="font-thin text-lg">
+              {currentUser?.email
+                ? getEmailPrefix(currentUser.email)
+                : "No Email"}
+            </p>
+            <ChevronDownIcon className="w-4 h-4" />
             <div className="dropdown font-thin text-black">
               <LogoutButton />
               <br />

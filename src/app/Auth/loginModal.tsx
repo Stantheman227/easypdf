@@ -1,5 +1,19 @@
 // LoginModal.js
+"use client";
 import React from "react";
+
+interface LoginModalProps {
+  email: string;
+  setEmail: (value: string) => void;
+  password: string;
+  setPassword: (value: string) => void;
+  handleLogin: () => void;
+  closeLoginModal: () => void;
+  setShowLoginModal: (show: boolean) => void;
+  setShowSignUpModal: (show: boolean) => void;
+  errorMessage?: string;
+  isLoading: boolean;
+}
 
 const LoginModal = ({
   email,
@@ -12,7 +26,7 @@ const LoginModal = ({
   setShowSignUpModal,
   errorMessage,
   isLoading,
-}) => {
+}: LoginModalProps) => {
   return (
     <div
       className="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm flex justify-center items-center"

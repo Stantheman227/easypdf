@@ -1,16 +1,24 @@
 "use client";
-import Navbar from "../components/Navbar/page";
-import PageOne from "../components/PageOne/page"; // import PageOne
-import PageTwo from "../components/PageTwo/page"; // import PageTwo
-import PageThree from "../components/PageThree/page"; // import PageThree
-import QueryInfo from "../components/QueryInfo/page";
-import RecentQueries from "../components/RecentQueries/page";
-import PromptLoginModal from "../components/PromptLoginModal/page";
-import supabase from "../supabaseClient/page";
+import Navbar from "@/Layout/navbar";
+import PageOne from "@/components/pageOne"; // import PageOne
+import PageTwo from "@/components/pageTwo"; // import PageTwo
+import PageThree from "@/components/pageThree"; // import PageThree
+import QueryInfo from "@/components/queryInfo";
+import RecentQueries from "@/components/recentQueries";
+import PromptLoginModal from "@/Auth/promptLoginModal";
+import supabase from "@/Services/supaBaseClinet";
 import { useState, useEffect } from "react";
 
-export default function easypdf() {
-  const [file, setFile] = useState(null);
+interface easyPdfProps {
+  // Define the interface for the Easypdf component
+  isLoggedIn: boolean;
+  file: File | null;
+  currentPage: number;
+  handleFileSelected: (file: File | null) => void;
+  deletePDF: () => void;
+}
+export default function Easypdf() {
+  const [file, setFile] = useState<File | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [isLoggedIn, setIsLoggedIn] = useState(false); // Zustandsvariable für den Anmeldestatus
 
@@ -55,7 +63,7 @@ export default function easypdf() {
     });
   }, []);
 
-  const handleFileSelected = (file) => {
+  const handleFileSelected = (file: File | null) => {
     setFile(file);
     // Handle the selected file here
     console.log("Selected file:", file);
@@ -74,9 +82,7 @@ export default function easypdf() {
       </div>
 
       <div className="flex flex-col lg:flex-row bg-easy-blue-200">
-
         <div className="flex basis-3/4 flex-col lg:flex-row w-full">
-          
           <div className="flex h-full">
             <RecentQueries
               queries={[
@@ -108,8 +114,6 @@ export default function easypdf() {
                 "Handyvertrag",
                 "Bankkonto",
                 "Abbuchungsbestätigung",
-                
-                
               ]}
             />
           </div>
@@ -117,7 +121,6 @@ export default function easypdf() {
           <div className="flex w-full h-full">
             <PageThree />
           </div>
-          
         </div>
 
         <div className="flex basis-1/4 flex-col h-full w-full items-center bg-easy-blue-200 p-5">

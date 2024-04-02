@@ -1,15 +1,17 @@
-import { useProceed } from "@/app/hooks/useProceed";
+"use client";
+import React from "react";
+import { useProceed } from "@/hooks/useProceed";
 
-type ConfirmScreenProps = {
+interface ConfirmScreenProps {
   totalPrice: number;
-  extractedText: string | null;
+  extractedText?: string;
   closeConfirmScreen: () => void;
   selectedContent: string;
-};
+}
 
 export default function ConfirmScreen({
   totalPrice,
-  extractedText,
+  extractedText, // Destructure extractedTextProps to get extractedText
   closeConfirmScreen,
   selectedContent,
 }: ConfirmScreenProps) {
@@ -21,10 +23,11 @@ export default function ConfirmScreen({
 
   const roundedTotalPrice = totalPrice.toFixed(4);
 
+  // Update the function to expect a string directly.
+  // This function now correctly handles extractedText as a string.
   const handleProceedAndClose = async (text: string) => {
-    const success = await handleProceed(text, selectedContent); // Änderung hier
+    const success = await handleProceed(text, selectedContent);
     if (success) {
-      // Überprüfung hinzugefügt
       closeConfirmScreen();
     }
   };
@@ -44,18 +47,16 @@ export default function ConfirmScreen({
         ) : (
           <div className="mt-4 flex justify-center space-x-6">
             <button
-              onClick={() => {
-                if (extractedText) {
-                  handleProceedAndClose(extractedText);
-                }
-              }}
+              // Ensure extractedText is a string, even if it means defaulting to an empty string.
+              onClick={() =>
+                extractedText && handleProceedAndClose(extractedText)
+              }
               className="bg-easy-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
               Ja
             </button>
-
             <button
-              onClick={() => closeConfirmScreen()}
+              onClick={closeConfirmScreen}
               className="bg-easy-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
             >
               Nein

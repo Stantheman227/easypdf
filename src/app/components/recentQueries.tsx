@@ -1,6 +1,10 @@
 import { DocumentIcon } from "@heroicons/react/24/outline";
 
-export default function RecentQueries({ queries }) {
+interface RecentQueriesProps {
+  queries: readonly string[];
+}
+
+export default function RecentQueries({ queries }: RecentQueriesProps) {
   return (
     <div className="w-full h-full p-5 overflow-hidden">
       <div className="h-full w-full bg-white rounded-lg p-5 shadow">

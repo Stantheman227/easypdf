@@ -1,25 +1,19 @@
+"use client";
 import { useState } from "react";
 import Link from "next/link";
-import UserMenu from "../UserMenu/page";
+import UserMenu from "./userMenu";
+import { navItems } from "@/lib/data";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const toggleNav = () => setIsOpen(!isOpen);
 
-  const navItems = [
-    { text: "Home", href: "/" },
-    { text: "easyPDF", href: "/easypdf" },
-    { text: "About", href: "/" },
-  ];
-
   return (
     <div className="flex ml-10 mr-10 space-x-10 w-full items-center min-h-[73px] max-h-[73px] z-20">
-
       <div className="flex w-full justify-between items-center">
         {/* Large Screen */}
-        
-        <div className="justify-start items-center w-full space-x-5 md:flex hidden">
 
+        <div className="justify-start items-center w-full space-x-5 md:flex hidden">
           {/* Navigation Buttons */}
           {navItems.map((item, index) => (
             <Link key={index} href={item.href}>
@@ -29,12 +23,11 @@ export default function Navbar() {
             </Link>
           ))}
         </div>
-        
+
         {/* User Menu */}
         <div className="text-2xl text-easy-blue font-bold">
           <UserMenu />
         </div>
-
 
         {/* Small Screen */}
         <div className="md:hidden">

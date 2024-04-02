@@ -1,5 +1,5 @@
 import { useState } from "react";
-import supabase from "../supabaseClient/page";
+import supabase from "@/Services/supaBaseClinet";
 import canUpload from "./useCanUpload";
 type SummaryResponseType = {
   summary: string;
@@ -40,7 +40,8 @@ export function useProceed() {
 
     try {
       const summarizeResponse = await fetch(
-        "http://localhost:3001/api/summarize",
+        "https://easypdfserver-4bf2d2c1026c.herokuapp.com/api/summarize",
+
         {
           method: "POST",
           headers: {

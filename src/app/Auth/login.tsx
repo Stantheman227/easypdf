@@ -1,7 +1,8 @@
+"use client";
 import React, { useState } from "react";
-import supabase from "../../supabaseClient/page";
-import LoginModal from "../LoginModal/page";
-import SignUpModal from "../SignUpModal/page";
+import supabase from "../Services/supaBaseClinet";
+import LoginModal from "./loginModal";
+import SignUpModal from "./signUpModal";
 
 const LoginButton = () => {
   const [email, setEmail] = useState("");
@@ -138,18 +139,22 @@ const LoginButton = () => {
   return (
     <div className="flex">
       <div className="flex flex-row space-x-5">
-      <button
-        className="hover:opacity-50 w-[150px]"
-        onClick={() => setShowLoginModal(true)}
-      >
-        <p className="font-thin text-black text-lg border-black border rounded-lg p-3 bg-white">Log In</p>
-      </button>
-      <button
-        className="hover:opacity-50 w-[150px]"
-        onClick={() => setShowSignUpModal(true)}
-      >
-        <p className="font-thin text-black text-lg border-black border rounded-md p-3 bg-white">Sign Up</p>
-      </button>
+        <button
+          className="hover:opacity-50 w-[150px]"
+          onClick={() => setShowLoginModal(true)}
+        >
+          <p className="font-thin text-black text-lg border-black border rounded-lg p-3 bg-white">
+            Log In
+          </p>
+        </button>
+        <button
+          className="hover:opacity-50 w-[150px]"
+          onClick={() => setShowSignUpModal(true)}
+        >
+          <p className="font-thin text-black text-lg border-black border rounded-md p-3 bg-white">
+            Sign Up
+          </p>
+        </button>
       </div>
 
       {showLoginModal && !showSignUpModal && (

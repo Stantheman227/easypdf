@@ -1,6 +1,6 @@
+"use client";
 import React from "react";
-import { useFileUpload } from "@/app/hooks/useFileUpload";
-import ConfirmScreen from "../ConfirmScreen/page";
+import { useFileUpload } from "@/hooks/useFileUpload";
 import { useState } from "react";
 import {
   AcademicCapIcon,
@@ -9,8 +9,14 @@ import {
   XMarkIcon,
   ChatBubbleLeftEllipsisIcon,
 } from "@heroicons/react/24/outline";
+import ConfirmScreen from "./confirmScreen";
 
-export default function PageTwo({ deletePDF, file }) {
+interface PageTwoProps {
+  deletePDF: () => void;
+  file: File | null;
+}
+
+export default function PageTwo({ deletePDF, file }: PageTwoProps) {
   const [selectedContent, setSelectedContent] = useState<string>("");
   const [inputValue, setInputValue] = useState<string>("");
 
@@ -99,7 +105,6 @@ export default function PageTwo({ deletePDF, file }) {
       </div>
 
       <div className="flex items-center flex-col">
-
         <div className="h-[85px] w-[250px] rounded-lg">
           <textarea
             placeholder="Mach aus meiner PDF Datei eine Feengeschichte"
@@ -108,18 +113,18 @@ export default function PageTwo({ deletePDF, file }) {
             onChange={(e) => setInputValue(e.target.value)}
           ></textarea>
         </div>
-          
-        <div>
-        <button
-          className="h-full w-full flex flex-row justify-between p-2 items-center space-x-5"
-          onClick={() => file && eigenerBefehl()}>
-          <div className="h-[40px] w-[250px] rounded-lg bg-easy-blue text-white flex flex-row justify-between p-2 hover:opacity-80">
-            <p className="">Weiter mit eigenem Befehl</p>
-            <ChatBubbleLeftEllipsisIcon />
-          </div>
-        </button>
-        </div>
 
+        <div>
+          <button
+            className="h-full w-full flex flex-row justify-between p-2 items-center space-x-5"
+            onClick={() => file && eigenerBefehl()}
+          >
+            <div className="h-[40px] w-[250px] rounded-lg bg-easy-blue text-white flex flex-row justify-between p-2 hover:opacity-80">
+              <p className="">Weiter mit eigenem Befehl</p>
+              <ChatBubbleLeftEllipsisIcon />
+            </div>
+          </button>
+        </div>
       </div>
     </div>
   );
